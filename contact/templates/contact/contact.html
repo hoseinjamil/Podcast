@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="site-blocks-cover overlay inner-page-cover"
+         style="background-image: url({% static 'images/hero_bg_1.jpg' %});" data-aos="fade"
+         data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row align-items-center justify-content-center text-center">
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <h1 class="text-white">Contact Us</h1>
+                    <a href="#">Home</a><span class="mx-2 text-white">&bullet;</span> <span
+                        class="text-white">Contact</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="site-section">
+        <div class="container" data-aos="fade-up">
+            {% if messages %}
+                <div class="alert alert-success" role="alert">
+                    {% for message in messages %}
+                        {{ message|safe }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-7 mb-5">
+                    <form method="post" class="bg-white">
+                        {% csrf_token %}
+                        <div class="">
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="c_fname" class="text-black">First Name <span
+                                            class="text-danger">*</span></label>
+                                    {% if form.first_name.errors %}
+                                        <div class="badge-danger">{{ form.first_name.errors }}</div>
+                                    {% endif %}
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
+                                    {% if form.last_name.errors %}
+                                        <div class="badge-danger">{{ form.last_name.errors }}</div>
+                                    {% endif %}
+                                    {{ form.last_name }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="c_email" class="text-black">Email <span
+                                            class="text-danger">*</span></label>
+                                    {% if form.email.errors %}
+                                        <div class="badge-danger">{{ form.email.errors }}</div>
+                                    {% endif %}
+                                    {{ form.email |attr:"class:form-control" }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="c_subject" class="text-black">Subject </label>
+                                    {% if form.subject.errors %}
+                                        <div class="badge-danger">{{ form.subject.errors }}</div>
+                                    {% endif %}
+                                    {{ form.subject }}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="c_message" class="text-black">Message </label>
+                                    {% if form.body.errors %}
+                                        <div class="badge-danger">{{ form.body.errors }}</div>
+                                    {% endif %}
+                                    {{ form.body }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <input type="submit" class="btn btn-primary btn-lg" value="Send Message">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-5">
+                    <div class="p-4 mb-3 bg-white">
+                        <p class="mb-0">Address</p>
+                        <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+                        <p class="mb-0">Phone</p>
+                        <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+                        <p class="mb-0">Email Address</p>
+                        <p class="mb-4"><a href="#">youremail@domain.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="site-blocks-cover overlay inner-page-cover"
+         style="background-image: url({% static 'images/hero_bg_1.jpg' %});" data-aos="fade"
+         data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row align-items-center justify-content-center text-center">
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <h2>Subscribe</h2>
+                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit nihil saepe libero sit odio
+                        obcaecati veniam.</p>
+                    <form action="#" method="post" class="site-block-subscribe">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control border-secondary text-white bg-transparent"
+                                   placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" id="button-addon2">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
