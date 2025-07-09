@@ -16,9 +16,10 @@ class Podcast(models.Model):
     mp3_file = models.FileField(upload_to='podcasts/')
     duration = models.DurationField(blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    date=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        return f"{self.title} - {self.date} - {self.author}"
 
     def formatted_duration(self):
         total_seconds = self.duration.total_seconds()

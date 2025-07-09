@@ -11,7 +11,7 @@ def podcast_detail(request, title):
     podcast_show = Podcast.objects.all().order_by('-created_at')[:2]
     return render(request, 'podcast_detail/podcast_detail.html', context={'podcast': podcast, 'podcast_show':podcast_show})
 
-
+@login_required
 def add_podcast(request):
     if request.method == 'POST':
         form = AddPodcastForm(request.POST, request.FILES)
@@ -24,7 +24,6 @@ def add_podcast(request):
             return redirect('add_podcast')
     else:
         form = AddPodcastForm()
-        # Retrieve all podcasts belonging to the current user
     podcasts = Podcast.objects.filter(author=request.user)
     return render(request, 'podcast_detail/add_podcast.html', {'form': form, 'podcasts':podcasts})
 

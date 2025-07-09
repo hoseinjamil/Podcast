@@ -111,9 +111,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 LOGIN_URL = '/auth/signin'
 STATIC_URL = 'static/'
+STATIC_ROOT= 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
